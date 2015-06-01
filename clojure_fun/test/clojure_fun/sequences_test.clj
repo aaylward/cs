@@ -1,6 +1,6 @@
-(ns clojure-fun.lists-test
+(ns clojure-fun.sequences-test
   (:require [clojure.test :refer :all]
-            [clojure-fun.lists :refer :all]))
+            [clojure-fun.sequences :refer :all]))
 
 (deftest my-reverse-test
   (testing "reverse a seq"

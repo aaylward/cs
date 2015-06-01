@@ -1,4 +1,4 @@
-(ns clojure-fun.lists)
+(ns clojure-fun.sequences)
 
 (defn my-reverse [input]
   (loop [in input out '()]
