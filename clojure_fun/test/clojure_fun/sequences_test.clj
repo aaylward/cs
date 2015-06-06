@@ -2,6 +2,18 @@
   (:require [clojure.test :refer :all]
             [clojure-fun.sequences :refer :all]))
 
+(deftest my-nth-test-first
+  (testing "get first"
+    (is (= 1 (my-nth '(1 2 3) 0)))))
+
+(deftest my-nth-test-other
+  (testing "get some element"
+    (is (= 5 (my-nth '(1 2 3 4 5 6) 4)))))
+
+(deftest my-nth-test-too-long
+  (testing "get after end of array"
+    (is (= nil (my-nth '(1 2 3 4 5 6) 8)))))
+
 (deftest my-reverse-test-list
   (testing "reverse a list"
     (is (= '(1 2 3 4 5) (my-reverse '(5 4 3 2 1))))))
