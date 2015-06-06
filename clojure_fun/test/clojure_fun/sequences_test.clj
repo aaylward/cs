@@ -14,6 +14,10 @@
   (testing "get after end of array"
     (is (= nil (my-nth '(1 2 3 4 5 6) 8)))))
 
+(deftest my-nth-test-exception
+  (testing "throws exception for negative n"
+    (is (thrown? IllegalArgumentException (my-nth '() -5)))))
+
 (deftest my-reverse-test-list
   (testing "reverse a list"
     (is (= '(1 2 3 4 5) (my-reverse '(5 4 3 2 1))))))

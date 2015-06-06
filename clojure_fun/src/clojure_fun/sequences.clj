@@ -1,7 +1,7 @@
 (ns clojure-fun.sequences)
 
 (defn my-nth [input n]
-  "eats it on negative `n`"
+  (if (neg? n) (throw (IllegalArgumentException. "n must be non-negative.")))
   (loop [in input counter n]
     (if (empty? in)
       nil
