@@ -35,3 +35,18 @@
 (defn my-palindrome [input]
   (= input (my-reverse input)))
 
+;(**) Flatten a nested list structure.
+(defn add-to-accum [item acc]
+  (if (not (seq? item))
+    (cons item acc)
+    (if (empty? item)
+      acc
+      (recur (rest item) (cons (first item) acc)))))
+
+(defn my-flatten [input]
+  (my-reverse
+    (loop [in input out '()]
+      (if (empty? in)
+        out
+        (recur (rest in) (add-to-accum (first in) out))))))
+
