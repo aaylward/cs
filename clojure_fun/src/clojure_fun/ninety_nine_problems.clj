@@ -1,4 +1,5 @@
 (ns clojure-fun.ninety-nine-problems)
+;https://wiki.haskell.org/99_questions
 
 ;(*) Find the last element of a list.
 (defn my-last [input]
