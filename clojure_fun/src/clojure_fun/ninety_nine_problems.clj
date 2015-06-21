@@ -37,20 +37,17 @@
 
 ;(**) Flatten a nested list structure.
 (defn add-to-accum [item acc]
-  (println item (not (list? item)) acc)
-  (if (not (list? item))
+  (if (not (seq? item))
     (cons item acc)
     (loop [in item out acc]
       (if (empty? in)
         out
-        (recur (rest in) (cons (first in) out))) )))
+        (recur (rest in) (add-to-accum (first in) out))))))
 
 (defn my-flatten [input]
-  (println "got " input)
-  (println)
-  (letfn [(my-flatten-reverse [input acc]
-    (if (empty? input)
+  (letfn [(my-flatten-reverse [in acc]
+    (if (empty? in)
       acc
-      (recur (rest input) (add-to-accum (first input) acc))))]
+      (recur (rest in) (add-to-accum (first in) acc))))]
     (my-reverse (my-flatten-reverse input '()) )))
 
