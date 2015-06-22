@@ -49,5 +49,5 @@
     (if (empty? in)
       acc
       (recur (rest in) (-add-to-accum (first in) acc))))]
-    (my-reverse (my-flatten-reverse input '()) )))
+    (my-reverse (my-flatten-reverse input '()))))
 
