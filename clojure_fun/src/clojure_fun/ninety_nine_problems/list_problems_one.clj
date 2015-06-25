@@ -1,4 +1,4 @@
-(ns clojure-fun.ninety-nine-problems)
+(ns clojure-fun.ninety-nine-problems.list-problems-one)
 ;https://wiki.haskell.org/99_questions
 
 ;(*) Find the last element of a list.
