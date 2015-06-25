@@ -80,8 +80,8 @@
   (loop [in input out '() seen-so-far 0]
     (if (empty? in)
       (my-reverse out)
-      (let [new-count (inc seen-so-far)]
-        (if (= (first in) (first (rest in)))
+      (let [current (first in) new-count (inc seen-so-far)]
+        (if (= current (first (rest in)))
           (recur (rest in) out new-count)
-          (recur (rest in) (cons (list (first in) new-count) out) 0))))))
+          (recur (rest in) (cons (list current new-count) out) 0))))))
 
