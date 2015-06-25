@@ -51,3 +51,35 @@
       (recur (rest in) (-add-to-accum (first in) acc))))]
     (my-reverse (my-flatten-reverse input '()))))
 
+
+;(**) Eliminate consecutive duplicates of list elements.
+(defn compress [input]
+  (loop [in input out '() last-letter nil]
+    (if (empty? in)
+      (my-reverse out)
+      (if (= (first in) last-letter)
+        (recur (rest in) out (first in))
+        (recur (rest in) (cons (first in) out) (first in))))))
+
+;(**) Pack consecutive duplicates of list elements into sublists.
+;If a list contains repeated elements they should be placed in separate sublists.
+(defn pack [input]
+  (loop [in input out '() previous-list '()]
+    (if (empty? in)
+      (my-reverse out)
+      (if (= (first in) (first (rest in)))
+        (recur (rest in) out (cons (first in) previous-list))
+        (recur (rest in) (cons (cons (first in) previous-list) out) '())))))
+
+
+;(*) Run-length encoding of a list. Use the result of problem P09 to
+;implement the so-called run-length encoding data compression method.
+;Consecutive duplicates of elements are encoded as lists (N E) where
+;N is the number of duplicates of the element E.
+(defn encode [input]
+  (loop [in input out '() seen-so-far 0]
+    (if (empty? in)
+      (my-reverse out)
+      (if (= (first in) (first (rest in)))
+        (recur (rest in) out (inc seen-so-far))
+        (recur (rest in) (cons (list (first in) (inc seen-so-far)) out) 0)))))
